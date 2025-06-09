@@ -1,5 +1,5 @@
 import { User } from "../Models/user.model.js";
-
+import {getRandomAvatar} from "../utils/avatarList.js"
 
 
 const registerUser = async (req,res) => {
@@ -17,7 +17,17 @@ const registerUser = async (req,res) => {
             return res.status(409).json({message : "User Already exist"})
         }
 
-        const user = new User({fullName,email,password})
+
+        const avatar = getRandomAvatar()
+
+        const user = new User({
+            
+            fullName,
+            email,
+            password,
+            profilePicture : avatar,
+
+        })
         await user.save();
 
         const token = user.generateJWT()
