@@ -36,7 +36,8 @@ const registerUser = async (req,res) => {
         .cookie("token", token, {
             httpOnly: true,
             secure: false, 
-            sameSite: "Lax", 
+            sameSite: 'None',
+            domain: '.vercel.app', 
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
         .json({
