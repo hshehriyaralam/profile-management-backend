@@ -7,6 +7,7 @@ import { EditUser } from '../Controllers/EditUser.js';
 import { googleAuth } from '../Controllers/googleAuth.js';
 import { uploadProfileImage } from '../Controllers/controller.multer.js';
 import {upload} from "../MiddleWare/upload.js"
+import { addTodo,getTodo } from '../Controllers/todo.js';
 
 
 const userRouter = express.Router()
@@ -18,6 +19,9 @@ userRouter.post('/logout',logOutUser)
 userRouter.put('/edit',authMiddleware,EditUser)
 userRouter.post('/google-auth',googleAuth)
 userRouter.post('/upload-profile',authMiddleware, upload.single('profilePicture'), uploadProfileImage)
+userRouter.post('/addTodo',authMiddleware,addTodo)
+userRouter.get('/getTodo',authMiddleware,getTodo)
+
 
 
 export default userRouter;
