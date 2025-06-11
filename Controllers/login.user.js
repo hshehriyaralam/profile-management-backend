@@ -26,12 +26,11 @@ const loginUser = async (req,res) => {
 
         const token = user.generateJWT();
         res.status(200)
-       res.cookie("token", token, {
+      res.cookie("token", token, {
         httpOnly: true,
-        secure: true,
-        sameSite: 'None',
-        domain: '.vercel.app',
-        maxAge: 7 * 24 * 60 * 60 * 1000,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'None',  // Must be None for cross-origin cookies
+        maxAge: 7 * 24 * 60 * 60 * 1000
         })
         
         .json({
