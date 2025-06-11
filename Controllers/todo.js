@@ -2,7 +2,6 @@ import {Todo} from "../Models/todo.model.js"
 
 
 const addTodo = async (req,res) => {
-
     try{
         const {title} = req.body
         const userId = req.user.id

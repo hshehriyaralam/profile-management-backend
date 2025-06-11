@@ -41,7 +41,7 @@ const googleAuth = async (req,res) => {
         })
 
         res.status(200)
-       res.cookie("token", token, {
+       res.cookie("token", jwttoken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'None',  
