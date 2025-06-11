@@ -28,7 +28,7 @@ const loginUser = async (req,res) => {
         res.status(200)
        res.cookie("token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',   // production me secure true
+        secure: true,
         sameSite: 'None',
         domain: '.vercel.app',
         maxAge: 7 * 24 * 60 * 60 * 1000,

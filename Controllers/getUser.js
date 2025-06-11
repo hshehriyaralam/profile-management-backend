@@ -1,9 +1,17 @@
-    const getProfile = async (req,res) => {
-        
+import {User} from "../Models/user.model.js"
+const getProfile = async (req,res) => {
+    try{        
         res.status(200).json({
             success : true,
             user : req.user,
         })
+    }catch(error){
+        console.log("get USer failed",error.message);
+         res.status(200).json({
+           message : "User not found"
+        })
+    }
+        
     }
     
     const logOutUser = async (req,res) => {

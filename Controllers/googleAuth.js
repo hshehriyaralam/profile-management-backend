@@ -43,9 +43,8 @@ const googleAuth = async (req,res) => {
         res.status(200)
         res.cookie('token', jwttoken, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production' ? true : false,
-             sameSite: 'None',
-            domain: '.vercel.app',
+            secure: false,
+            sameSite: 'Lax',
             maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
         })
         
